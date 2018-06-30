@@ -37,6 +37,9 @@ class AllItems extends Component {
             {items.map(i =>
               <li key={i.id}>
                 <Link to={`/menus/1/items/${i.id}`}> {i.name} </Link>
+                <p>Item Viewed: {i.view}</p>
+                <p>Item Purchased: {i.purchase}</p>
+                <hr />
               </li>
             )}
           </ul>

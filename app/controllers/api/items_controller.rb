@@ -7,7 +7,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def page
-    x = Item.paginate(:page => params[:page], :per_page => 30)
+    x = Item.paginate(:page => params[:page], :per_page => 30).order("created_at")
     render json: x
   end
 

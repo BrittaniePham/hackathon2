@@ -31,7 +31,7 @@ class Item extends Component {
         <h3>${item.price}</h3>
         <Button>Add Item to Cart</Button> 
         {/* TODO!!! */}
-        <Link to='/menus/1'>Back</Link>
+        <Link to='/all_items'>Back</Link>
       </div>
     );
   }
