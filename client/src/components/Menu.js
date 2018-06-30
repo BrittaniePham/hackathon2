@@ -98,12 +98,13 @@ class Menu extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        
+        <Button>CHECKOUT</Button> 
+        {/* todo!! */}
         { showForm ?
           //form component here
           <Button onClick={this.toggleForm}>cancel</Button>
         :
-          <Button onClick={this.toggleForm}>add an item</Button>
+          <Button onClick={this.toggleForm}>add item to menu</Button>
         }
       </Container>
     );

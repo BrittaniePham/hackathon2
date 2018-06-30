@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {setHeaders} from '../reducers/headers'
 import {connect} from 'react-redux'
+import { Button } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 class Item extends Component {
 
@@ -22,6 +24,9 @@ class Item extends Component {
         <h2>{item.name}</h2>
         <h3>{item.description}</h3>
         <h3>${item.price}</h3>
+        <Button>Add Item to Cart</Button> 
+        {/* TODO!!! */}
+        <Link to='/menus/1'>Back</Link>
       </div>
     );
   }
