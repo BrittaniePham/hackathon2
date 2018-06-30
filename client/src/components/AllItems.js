@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import InfiniteScroll from 'react-infinite-scroller';
+import {Button} from 'semantic-ui-react'
 
 
 
@@ -15,21 +15,23 @@ class AllItems extends Component {
   getNextPage = () => {
     const {page} = this.state
 
-    axios.get(`/api/page?page=${this.state.page}`)
+    axios.get(`/api/page?page=${page}`)
       .then(res => {
-        this.setState({ items: [...this.state.items, res.data], page: page + 1 })
+        this.setState({ items: res.data, page: page + 1 })
+      })
+  }
+
+  getPreviousPage = () => {
+    const {page} = this.state
+    axios.get(`/api/page?page=${page}`)
+      .then(res => {
+        this.setState({ items: res.data, page: page - 1 })
       })
   }
 
   render() {
     const { items } = this.state
     return (
-      <InfiniteScroll
-        pageStart={0}
-        loadMore={this.getNextPage}
-        hasMore={true || false}
-        loader={<div className="loader" key={0}>Loading ...</div>}
-      >
         <div>
           <ul>
             {items.map(i =>
@@ -38,8 +40,10 @@ class AllItems extends Component {
               </li>
             )}
           </ul>
+          <Button onClick={this.getPreviousPage}>Previous Page</Button>
+          <Button onClick={this.getNextPage}>Next Page</Button>
+
         </div>
-      </InfiniteScroll>
     );
   }
 }
