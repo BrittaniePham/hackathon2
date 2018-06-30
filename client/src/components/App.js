@@ -28,8 +28,8 @@ class App extends Component {
         
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
-            <Route exact path='/menus/:id' component={Menu} />
-            <Route exact path='/menus/:menu_id/items/:id' component={Item} />
+            <Route exact path='/menus/1' component={Menu} />
+            <Route exact path='/menus/1/items/:id' component={Item} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>

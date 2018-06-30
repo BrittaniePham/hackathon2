@@ -26,6 +26,19 @@ class Menu extends Component {
     this.setState({showForm: !this.state.showForm})
   }
 
+  submit = (item) => {
+    const { items } = this.state
+    axios.post(`/api/menus/1/items`, { item })
+      .then( res => {
+        this.setState({
+          items: [...items, res.data],
+        })
+      })
+      .catch( e => { 
+        console.log(e)
+      })
+  }
+
   render() {
     const { items, showForm } = this.state
     return (
@@ -121,7 +134,7 @@ class Menu extends Component {
         { showForm ?
           //form component here
           <div>
-          <ItemForm/>
+          <ItemForm submit={this.submit} toggleForm={this.toggleForm}/>
           <Button onClick={this.toggleForm}>cancel</Button>
           </div>
         :
