@@ -21,7 +21,7 @@ class Menu extends Component {
   }
 
   toggleForm = () => {
-    this.setState({showform: !this.state.showForm})
+    this.setState({showForm: !this.state.showForm})
   }
 
   render() {
@@ -99,10 +99,11 @@ class Menu extends Component {
           </Grid.Row>
         </Grid>
         
-        { showForm ? 
+        { showForm ?
+          //form component here
           <Button onClick={this.toggleForm}>cancel</Button>
         :
-        <Button onClick={this.toggleForm}>add an item</Button>
+          <Button onClick={this.toggleForm}>add an item</Button>
         }
       </Container>
     );
