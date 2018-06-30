@@ -94,6 +94,7 @@ class Menu extends Component {
                     <Link to={`/menus/1/items/${i.id}`}>{i.name}</Link>
                    </li>
                 )}
+                
               </Segment>
               <Segment>
                 <Header as='h1' textAlign='center' >Seafood</Header>
@@ -132,7 +133,7 @@ class Menu extends Component {
         </Grid>
         <Button>CHECKOUT</Button> 
         {/* todo!! */}
-        { (showForm && is_admin) ? 
+        { (showForm) ? 
           //form component here
           <div>
           <ItemForm submit={this.submit} toggleForm={this.toggleForm}/>
