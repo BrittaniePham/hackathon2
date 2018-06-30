@@ -8,7 +8,9 @@ class Menu extends Component {
 
   componentDidMount() {
     axios.get('/api/menus/:id/items')
-      .then( res => this.setState({ items: res.data }))
+      .then( res => {
+        this.setState({ items: res.data })
+      })
   }
 
   render() {
