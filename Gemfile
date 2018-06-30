@@ -11,6 +11,7 @@ gem 'omniauth'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'faker'
+gem 'will_paginate'
 group :development, :test do
   gem 'pry'
 end
