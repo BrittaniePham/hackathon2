@@ -8,8 +8,7 @@ import { setFlash } from '../reducers/flash'
 import { setHeaders } from '../reducers//headers';
 import { connect } from 'react-redux';
 import ItemForm from './ItemForm'
-
-
+import isAdmin from '../permissions'
 
 class Menu extends Component {
   state = { items: [], showForm: false }
@@ -41,6 +40,8 @@ class Menu extends Component {
 
   render() {
     const { items, showForm } = this.state
+    const { user: { is_admin } } = this.props
+
     return (
     <Background>
       <Container>
@@ -131,7 +132,7 @@ class Menu extends Component {
         </Grid>
         <Button>CHECKOUT</Button> 
         {/* todo!! */}
-        { showForm ?
+        { (showForm && is_admin) ? 
           //form component here
           <div>
           <ItemForm submit={this.submit} toggleForm={this.toggleForm}/>
@@ -151,7 +152,7 @@ height: 100vh;
 `
 
 const mapStateToProps = (state) => {
-  return { items: state.items }
+  return { items: state.items, user: state.user }
 }
 
 export default connect(mapStateToProps)(Menu);

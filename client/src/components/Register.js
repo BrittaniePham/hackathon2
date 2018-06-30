@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Header, Form, Button, Segment } from 'semantic-ui-react';
+import { Header, Form, Button, Segment, Checkbox } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { registerUser } from '../reducers/user';
 import { setFlash } from '../reducers/flash';
 
 class Register extends Component {
-  state = { email: '', password: '', passwordConfirmation: '' };
+  state = { email: '', password: '', passwordConfirmation: '', is_admin: '' };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -21,9 +21,16 @@ class Register extends Component {
     this.setState({ [id]: value });
   }
 
+  // handleAdmin = (e, { value }) => this.setState({ is_admin: !this.state.is_admin })
+
+  toggleAdmin = () => {
+    this.setState({ is_admin: !this.state.is_admin })
+  }
+
   render() {
     const { email, password, passwordConfirmation } = this.state;
 
+    const {value} = this.state
     return (
       <Segment basic>
         <Header as='h1' textAlign='center'>Register Component</Header>
@@ -60,6 +67,10 @@ class Register extends Component {
               onChange={this.handleChange}
             />
           </Form.Field>
+          <Checkbox 
+            label='Admin'
+            onClick={this.toggleAdmin}
+          />
           <Segment basic textAlign='center'>
             <Button type='submit'>Submit</Button>
           </Segment>
