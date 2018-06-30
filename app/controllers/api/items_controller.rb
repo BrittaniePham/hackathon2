@@ -20,7 +20,8 @@ class Api::ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    view = @item.view
+    if @item.update({view: view+1})
       render json: @item
     else
       render json: error

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :menus do
       resources :items
     end
+    resources :carts
   end
 
   #Do not place any routes below this one

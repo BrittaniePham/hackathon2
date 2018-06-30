@@ -10,11 +10,17 @@ class Item extends Component {
   state = { item: {} }
 
   componentDidMount() {
-    axios.get(`api/menus/1/items/${this.props.match.params.id}`)
-      .then( res => {
+
+    axios.get(`/api/menus/1/items/${this.props.match.params.id}`)
+      .then(res => {
         this.props.dispatch(setHeaders(res.headers))
         this.setState({ item: res.data })
-      } )
+      })
+    axios.put(`/api/menus/1/items/${this.props.match.params.id}`)
+      .then(res => {
+        this.props.dispatch(setHeaders(res.headers))
+        this.setState({ item: res.data })
+      })
   }
 
   render() {
@@ -22,7 +28,6 @@ class Item extends Component {
     return (
       <div>
         <h2>{item.name}</h2>
-        <h3>{item.description}</h3>
         <h3>${item.price}</h3>
         <Button>Add Item to Cart</Button> 
         {/* TODO!!! */}
