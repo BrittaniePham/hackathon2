@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { 
   Header, 
   Image,
+  Button,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 
@@ -13,10 +14,13 @@ class Home extends Component {
       <Fragment>
         <Background>
           <Header as='h1' textAlign='center' color= 'red'>Red House<br/></Header>
-            <Image textAlign='center'src='https://fthmb.tqn.com/h5640eOdlK-rhPQpHnGYT6zHsY4=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/beef-and-vegetable-stir-fry-165955462-5834b0523df78c6f6a6af185.jpg'alt="yummy food" height="30%"  centered/>
+            <Image textAlign='center'src='https://fthmb.tqn.com/h5640eOdlK-rhPQpHnGYT6zHsY4=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/beef-and-vegetable-stir-fry-165955462-5834b0523df78c6f6a6af185.jpg'alt="yummy food" height="60%"  centered/>
               <br/>
             <Header textAlign='center' >
-              <Link to='/menus/1'red >Menu</Link>
+
+            <Button inverted color='teal'>
+              <Link to='/menus/1' >MENU</Link>
+            </Button>
             </Header>
             <br/>
           <Header as='h2' textAlign='center'>1465 S State St | Open 11:30 to 9:30
@@ -33,6 +37,7 @@ class Home extends Component {
 
 const Background = styled.div`
 background: slategray;
+height: 100vh;
 `
 
 export default Home;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Segment, Header, Card, Divider, Container, Button } from 'semantic-ui-react'
 import Item from './Item'
 import axios from 'axios'
+import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 import { setFlash } from '../reducers/flash'
 import { setHeaders } from '../reducers//headers';
@@ -107,6 +108,10 @@ class Menu extends Component {
     );
   }
 }
+const Background = styled.div`
+background: slategray;
+height: 100vh;
+`
 
 const mapStateToProps = (state) => {
   return { items: state.items }

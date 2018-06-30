@@ -27,6 +27,7 @@ import {
   
   const Background = styled.div`
   background: slategray;
+  height: 100vh;
   `
   
   export default Home;
