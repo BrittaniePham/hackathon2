@@ -9,15 +9,13 @@
 1.times do
   menu = Menu.create(name: 'Dinner')
   30.times do
-
+    menu.items.create(
+      name: Faker::Food.dish,
+      price: 6.00,
+      category: ['Dim Sum', 'Stir Fry', 'Seafood', 'Hot Pot', 'Fried Rice', 'Noodle Soups'].sample,
+      view: 0,
+      purchase: 0,
+      menu_id: menu.id
+    )
   end
-
 end
-
-
-Dim Sum,
-Stir Fry,
-Seafood,
-Noodle Soups,
-Hot Pot,
-Fried Rice
