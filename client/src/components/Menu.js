@@ -28,6 +28,9 @@ class Menu extends Component {
     const { items, showForm } = this.state
     return (
       <Container>
+        <Button color='purple'>Instagram</Button>
+        <Button color='red'>Yelp</Button>
+        <Button color='blue'>Facebook</Button>
         <Grid columns='equal'>
           <Grid.Row>
             <Grid.Column>
