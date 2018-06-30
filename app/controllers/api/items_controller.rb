@@ -1,8 +1,9 @@
 class Api::ItemsController < ApplicationController
-  before_action :set_menu, only: [:show, :update, :destroy]
+  before_action :set_item, only: [:show, :update, :destroy]
+  before_action :set_menu
 
   def index
-    render json: Menu.items.order("created_at")
+    render json: @menu.items.order("created_at")
   end
 
   def show
@@ -10,7 +11,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    item = Menu.items.new(item_params)
+    item = @menu.items.new(item_params)
     if item.save
       render json: item
     else
@@ -33,6 +34,10 @@ class Api::ItemsController < ApplicationController
   private
     def set_item
       @item = Item.find(params[:id])
+    end
+
+    def set_menu
+      @menu = Menu.find(params[:menu_id])
     end
 
     def item_params
