@@ -10,6 +10,8 @@ import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import Menu from './Menu'
+import About from './About'
+
 
 
 class App extends Component {
@@ -21,6 +23,8 @@ class App extends Component {
         <FetchUser>
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/about' component={About} />
+        
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route exact path='/menus/:id' component={Menu} />
