@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 1.times do
-  Menu.create(name: 'Dinner')
+  menu = Menu.create(name: 'Dinner')
   30.times do
-    
+
   end
 
 end
