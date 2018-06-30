@@ -11,7 +11,7 @@ import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import Menu from './Menu'
 import About from './About'
-
+import AllItems from './AllItems'
 import Item from './Item'
 
 
@@ -25,7 +25,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/about' component={About} />
-        
+            <Route exact path='/all_items' component={AllItems} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route exact path='/menus/1' component={Menu} />

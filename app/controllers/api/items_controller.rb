@@ -1,9 +1,14 @@
 class Api::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :update, :destroy]
-  before_action :set_menu
+  before_action :set_menu, only: [:index, :create]
 
   def index
     render json: @menu.items.order("created_at")
+  end
+
+  def page
+    x = Item.paginate(:page => params[:page], :per_page => 30)
+    render json: x
   end
 
   def show

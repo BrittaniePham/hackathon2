@@ -8,7 +8,7 @@
 
 1.times do
   menu = Menu.create(name: 'Dinner')
-  30.times do
+  180.times do
     menu.items.create(
       name: Faker::Food.dish,
       price: 6.00,

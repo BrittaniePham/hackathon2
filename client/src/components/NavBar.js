@@ -43,6 +43,9 @@ class NavBar extends Component {
           <Link to='/about'>
             <Menu.Item name='About' />
           </Link>
+          <Link to='/all_items'>
+            <Menu.Item name='All Items' />
+          </Link>
 
           { this.rightNavs() }
         </Menu>
