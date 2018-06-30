@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+1.times do
+  Menu.create(name: 'Dinner')
+  30.times do
+    
+  end
+
+end
+
+
+Dim Sum,
+Stir Fry,
+Seafood,
+Noodle Soups,
+Hot Pot,
+Fried Rice

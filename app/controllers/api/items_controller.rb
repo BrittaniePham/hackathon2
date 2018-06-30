@@ -2,7 +2,7 @@ class Api::ItemsController < ApplicationController
   before_action :set_menu, only [:show, :update, :destroy]
 
   def index
-    render json: current_user.items.order("created_at")
+    render json: Menu.items.order("created_at")
   end
 
   def show
@@ -10,11 +10,11 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    item = current_user.items.new(item_params)
+    item = Menu.items.new(item_params)
     if item.save
       render json: item
     else
-      render_errors(item)
+      render json: error
     end
   end
 
@@ -22,7 +22,7 @@ class Api::ItemsController < ApplicationController
     if @item.update(item_params)
       render json: @item
     else
-      render_error(@item)
+      render json: error
     end
   end
 
@@ -32,10 +32,10 @@ class Api::ItemsController < ApplicationController
 
   private
     def set_item
-      @reservation = current_user.items.find(params[:id])
+      @item = Item.find(params[:id])
     end
 
     def item_params
-      params.require(:menu).permit(:name, :price, :view, :purchase, :menu_id)
+      params.require(:menu).permit(:name, :price, :view, :purchase, :menu_id, :category)
     end
 end
