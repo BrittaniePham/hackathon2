@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Segment, Header, Card, Divider, Container, Button } from 'semantic-ui-react'
+import { Grid, Segment, Header, Card, Divider, Container, Button, Icon } from 'semantic-ui-react'
 import Item from './Item'
 import axios from 'axios'
 import styled from 'styled-components';
@@ -28,9 +28,21 @@ class Menu extends Component {
     const { items, showForm } = this.state
     return (
       <Container>
-        <Button color='purple'>Instagram</Button>
-        <Button color='red'>Yelp</Button>
-        <Button color='blue'>Facebook</Button>
+        <Button color='purple'>
+          <a href='https://www.instagram.com/phambeee/?hl=en' target='_blank'>
+            <Icon name='instagram' /> Instagram
+          </a>
+        </Button>
+        <Button color='red'>
+        <a href='https://www.yelp.com/biz/red-house-salt-lake-city' target='_blank'>
+          Yelp
+        </a>
+        </Button>
+        <Button color='facebook'>
+          <a href='https://www.facebook.com/Red-Moose-Coffee-Company-177157861758/' target='_blank'>
+            <Icon name='facebook' /> Facebook
+          </a>
+        </Button>
         <Grid columns='equal'>
           <Grid.Row>
             <Grid.Column>
