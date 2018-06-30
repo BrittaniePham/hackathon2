@@ -12,6 +12,7 @@ import FetchUser from './FetchUser';
 import Menu from './Menu'
 import About from './About'
 
+import Item from './Item'
 
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route exact path='/menus/:id' component={Menu} />
+            <Route exact path='/menus/:menu_id/items/:id' component={Item} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>

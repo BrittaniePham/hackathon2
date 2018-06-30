@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
-import { Grid, Segment, Header, Card, Divider, Container } from 'semantic-ui-react'
+import { Grid, Segment, Header, Card, Divider, Container, Button } from 'semantic-ui-react'
 import Item from './Item'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { setFlash } from '../reducers/flash'
+import { setHeaders } from '../reducers//headers';
+import { connect } from 'react-redux';
 
 
 class Menu extends Component {
-  state = { items: [] }
+  state = { items: [], showForm: false }
 
   componentDidMount() {
     axios.get('/api/menus/1/items')
       .then( res => {
+        this.props.dispatch(setHeaders(res.headers))
         this.setState({ items: res.data })
       })
   }
 
+  toggleForm = () => {
+    this.setState({showform: !this.state.showForm})
+  }
+
   render() {
-    const { items } = this.state
+    const { items, showForm } = this.state
     return (
       <Container>
         <Grid columns='equal'>
@@ -28,7 +36,7 @@ class Menu extends Component {
                 { items.map (i => 
                    i.category === 'Dim Sum' &&
                    <li key={i.id}>
-                    <Link to={`/menus/1/items/${i.id}`} />
+                    <Link to={`/menus/1/items/${i.id}`}>{i.name}</Link>
                    </li>
                 )}
               </Segment>
@@ -38,7 +46,7 @@ class Menu extends Component {
                 { items.map (i => 
                    i.category === 'Noodle Soups' &&
                    <li key={i.id}>
-                    <Link to={`/menus/1/items/${i.id}`} />
+                    <Link to={`/menus/1/items/${i.id}`} >{i.name}</Link>
                    </li>
                 )}
               </Segment>
@@ -50,29 +58,29 @@ class Menu extends Component {
                 { items.map (i => 
                    i.category === 'Stir Fry' &&
                    <li key={i.id}>
-                    <Link to={`/menus/1/items/${i.id}`} />
+                    <Link to={`/menus/1/items/${i.id}`}>{i.name}</Link>
                    </li>
                 )}
               </Segment>
-            </Grid.Column>
-            <Grid.Column>
               <Segment>
                 <Header as='h1' textAlign='center' >Seafood</Header>
                 <Divider/>
                 { items.map (i => 
                    i.category === 'Seafood' &&
                    <li key={i.id}>
-                    <Link to={`/menus/1/items/${i.id}`} />
+                    <Link to={`/menus/1/items/${i.id}`}>{i.name}</Link>
                    </li>
                 )}
               </Segment>
+            </Grid.Column>
+            <Grid.Column>
               <Segment>
                 <Header as='h1' textAlign='center' >Hot Pot</Header>
                 <Divider/>
                 { items.map (i => 
                    i.category === 'Hot Pot' &&
                    <li key={i.id}>
-                    <Link to={`/menus/1/items/${i.id}`} />
+                    <Link to={`/menus/1/items/${i.id}`}>{i.name}</Link>
                    </li>
                 )}
               </Segment>
@@ -82,16 +90,26 @@ class Menu extends Component {
                 { items.map (i => 
                    i.category === 'Fried Rice' &&
                    <li key={i.id}>
-                    <Link to={`/menus/1/items/${i.id}`} />
+                    <Link to={`/menus/1/items/${i.id}`}>{i.name}</Link>
                    </li>
                 )}
               </Segment>
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        
+        { showForm ? 
+          <Button onClick={this.toggleForm}>cancel</Button>
+        :
+        <Button onClick={this.toggleForm}>add an item</Button>
+        }
       </Container>
     );
   }
 }
 
-export default Menu;
+const mapStateToProps = (state) => {
+  return { items: state.items }
+}
+
+export default connect(mapStateToProps)(Menu);
