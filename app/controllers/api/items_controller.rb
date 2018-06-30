@@ -1,5 +1,5 @@
 class Api::ItemsController < ApplicationController
-  before_action :set_menu, only [:show, :update, :destroy]
+  before_action :set_menu, only: [:show, :update, :destroy]
 
   def index
     render json: Menu.items.order("created_at")
