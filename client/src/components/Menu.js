@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import { setFlash } from '../reducers/flash'
 import { setHeaders } from '../reducers//headers';
 import { connect } from 'react-redux';
+import ItemForm from './ItemForm'
+
 
 
 class Menu extends Component {
@@ -27,6 +29,7 @@ class Menu extends Component {
   render() {
     const { items, showForm } = this.state
     return (
+    <Background>
       <Container>
         <Button color='purple'>
           <a href='https://www.instagram.com/phambeee/?hl=en' target='_blank'>
@@ -117,11 +120,15 @@ class Menu extends Component {
         {/* todo!! */}
         { showForm ?
           //form component here
+          <div>
+          <ItemForm/>
           <Button onClick={this.toggleForm}>cancel</Button>
+          </div>
         :
           <Button onClick={this.toggleForm}>add item to menu</Button>
         }
       </Container>
+    </Background>
     );
   }
 }
