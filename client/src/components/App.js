@@ -13,6 +13,7 @@ import Menu from './Menu'
 import About from './About'
 import AllItems from './AllItems'
 import Item from './Item'
+import AllOrders from './AllOrders'
 
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route exact path='/menus/1' component={Menu} />
+            <Route exact path='/all_orders' component={AllOrders} />
             <Route exact path='/menus/1/items/:id' component={Item} />
             <Route component={NoMatch} />
           </Switch>

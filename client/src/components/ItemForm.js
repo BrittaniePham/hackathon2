@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form, Segment } from 'semantic-ui-react'
+import {connect} from 'react-redux'
 
 class ItemForm extends React.Component {
 
@@ -55,4 +56,4 @@ class ItemForm extends React.Component {
     )
   }
 }
-export default ItemForm
+export default connect()(ItemForm)

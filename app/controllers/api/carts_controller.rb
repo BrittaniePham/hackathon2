@@ -1,5 +1,5 @@
 class Api::CartsController < ApplicationController
-  before_action :set_cart
+  before_action :set_cart, only: [:show, :update, :destroy]
 
   def index
     render json: current_user.carts.all
@@ -10,10 +10,10 @@ class Api::CartsController < ApplicationController
   end
 
   def create
-    item = Item.where(name: params[:name])
+    item = Item.where(id: params[:id])[0]
     item_id = item.id
     name = item.name
-    cart = Cart.new({user_id: current_user.id, item_id: item_id, name: item.name})
+    cart = Cart.new({user_id: current_user.id, item_id: item_id, name: name})
     if cart.save
       render json: cart
     else
@@ -31,6 +31,10 @@ class Api::CartsController < ApplicationController
 
   def destroy
     @cart.destroy
+  end
+
+  def everything
+    render json: Cart.all
   end
 
   private

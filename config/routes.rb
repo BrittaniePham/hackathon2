@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     resources :carts
     get 'page', to: 'items#page'
+    get 'everything', to: 'carts#everything'
   end
 
   #Do not place any routes below this one
